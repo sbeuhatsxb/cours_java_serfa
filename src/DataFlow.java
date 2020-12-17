@@ -114,7 +114,7 @@ public class DataFlow {
         //Sauvegarde de l'état d'un objet dans un fichier
         String sbeuh = new String();
         try {
-            FileOutputStream fos = new FileOutputStream(new File("save"));
+            FileOutputStream fos = new FileOutputStream("save");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
 
@@ -127,7 +127,7 @@ public class DataFlow {
 
         //Lire la sauvegarde
         try {
-            FileInputStream fis = new FileInputStream(new File("save"));
+            FileInputStream fis = new FileInputStream("save");
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             sbeuh = (String) ois.readObject();
