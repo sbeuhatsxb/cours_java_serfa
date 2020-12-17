@@ -112,13 +112,16 @@ public class DataFlow {
         }
 
         //Sauvegarde de l'état d'un objet dans un fichier
+        // https://mkyong.com/java/how-to-read-and-write-java-object-to-a-file/
         String sbeuh = new String();
+        String sbeuh2 = new String();
         try {
             FileOutputStream fos = new FileOutputStream("save");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-
+            //Peut charger plusieurs objets ...
 
             oos.writeObject(sbeuh);
+            oos.writeObject(sbeuh2);
             oos.close();
             fos.close();
         } catch (IOException e) {
@@ -130,8 +133,9 @@ public class DataFlow {
             FileInputStream fis = new FileInputStream("save");
             ObjectInputStream ois = new ObjectInputStream(fis);
 
+            //... à condition de les faire suivre dans l'ordre
             sbeuh = (String) ois.readObject();
-
+            sbeuh2 = (String) ois.readObject();
             fis.close();
             ois.close();
         } catch (IOException | ClassNotFoundException e) {
