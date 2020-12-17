@@ -111,5 +111,33 @@ public class DataFlow {
             e.printStackTrace();
         }
 
+        //Sauvegarde de l'état d'un objet dans un fichier
+        String sbeuh = new String();
+        try {
+            FileOutputStream fos = new FileOutputStream(new File("save"));
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+
+            oos.writeObject(sbeuh);
+            oos.close();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Lire la sauvegarde
+        try {
+            FileInputStream fis = new FileInputStream(new File("save"));
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            sbeuh = (String) ois.readObject();
+
+            fis.close();
+            ois.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
